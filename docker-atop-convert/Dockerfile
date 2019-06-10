@@ -17,6 +17,7 @@ RUN \
     wget http://www.atoptool.nl/download/atop-1.27-3.tar.gz && tar -xvzf atop-1.27-3.tar.gz && rm atop-1.27-3.tar.gz ;\
     wget http://www.atoptool.nl/download/atop-2.1-1.tar.gz  && tar -xvzf atop-2.1-1.tar.gz  && rm atop-2.1-1.tar.gz  ;\
     wget http://www.atoptool.nl/download/atop-2.2-3.tar.gz  && tar -xvzf atop-2.2-3.tar.gz  && rm atop-2.2-3.tar.gz  ;\
+    wget http://www.atoptool.nl/download/atop-2.4.0.tar.gz  && tar -xvzf atop-2.4.0.tar.gz  && rm atop-2.4.0.tar.gz ; \
     D=$(pwd); ls -la / /root ; \
     cd /atop-1.26   &&  make all install clean && cd / rm -R /atop-1.26 ; \
     cd /atop-1.27-3 &&  make all install clean && cd / rm -R /atop-1.27-3 ; \
@@ -26,6 +27,9 @@ RUN \
     cd /atop-2.2-3  &&  make all genericinstall clean && cd / rm -R /atop-2.2-3  ; \
     cd /usr/bin; ln -fs atop-2.2-3 /usr/bin/atop-2.2    ;\
     cd /usr/bin; ln -fs atop-2.2-3 /usr/bin/atopsar-2.2 ;\
+    cd /atop-2.4.0  &&  make all genericinstall clean && cd / rm -R /atop-2.4.0  ; \
+    cd /usr/bin; ln -fs atop-2.4.0 /usr/bin/atop-2.4    ;\
+    cd /usr/bin; ln -fs atop-2.4.0 /usr/bin/atopsar-2.4 ;\
     rm -f /etc/atop/atop.daily /etc/rc.d/init.d/atop /etc/cron.d/atop ; \
     ls -la /usr/bin/a* /usr/sbin/a* ;\
     apt-get remove -y build-essential make; apt-get autoremove -y
